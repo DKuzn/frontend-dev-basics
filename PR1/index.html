@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Калькулятор квадратного уравнения</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <h1>Калькулятор квадратного уравнения</h1>
+    <p>Для решения квадратного уравнения вида ax^2 + bx + c = 0 введите коэффициенты a, b и c.</p>
+    <div id="main">
+        <input class="mainInputs" id="inputA" type="number" placeholder="Введите a">
+        <input class="mainInputs" id="inputB" type="number" placeholder="Введите b">
+        <input class="mainInputs" id="inputC" type="number" placeholder="Введите c">
+        <button class="mainInputs" onclick="onSolveButtonClick();">Решить</button>
+        <button class="mainInputs" onclick="onResetButtonClick();">Очистить</button>
+        <p id="result"></p>
+    </div>
+</body>
+
+</html>
