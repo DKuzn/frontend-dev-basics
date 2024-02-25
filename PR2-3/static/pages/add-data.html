@@ -3,22 +3,22 @@
 
 <head>
     <title>Управление данными</title>
-    <link rel="stylesheet" href="../../static/styles/index.css">
-    <script src="../../static/js/index.js"></script>
+    <link rel="stylesheet" href="/styles/index.css">
+    <script src="/js/index.js"></script>
 </head>
 
 <body>
     <h1>Добавление данных</h1>
     <div class="container">
-        <a href="../../index.html">Главная</a>
-        <a href="../../static/pages/read-data.html">Просмотр данных</a>
-        <form id="mainForm" class="container">
+        <a href="/">Главная</a>
+        <a href="/pages/read-data.html">Просмотр данных</a>
+        <form id="mainForm" class="container" onsubmit="onFormSubmit();">
             <input class="mainInputs" type="text" placeholder="Название мероприятия" name="event_name" required>
-            <input class="mainInputs" type="text" placeholder="Название площадки" name="event_place" required>
+            <input class="mainInputs" type="text" placeholder="Название площадки" name="event_plate" required>
             <input class="mainInputs" type="text" placeholder="Тип мероприятия" name="event_type" required>
             <input class="mainInputs" type="date" placeholder="Дата" name="event_date" required>
             <input class="mainInputs" type="time" placeholder="Время" name="event_time" required>
-            <input class="mainInputs" type="button" onclick="onFormSubmit();" value="JNg">
+            <input class="mainInputs" type="submit">
             <input class="mainInputs" type="reset">
         </form>
     </div>

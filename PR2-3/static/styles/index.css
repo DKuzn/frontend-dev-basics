@@ -5,6 +5,22 @@ body {
     text-align: center;
 }
 
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:hover {
+    background-color: #ebebeb;
+}
+
 .container {
     display: flex;
     flex-direction: column;
