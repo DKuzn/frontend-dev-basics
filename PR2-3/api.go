@@ -63,5 +63,6 @@ func main() {
 
 	methods := handlers.AllowedMethods([]string{"POST", "GET", "PUT", "DELETE"})
 	origins := handlers.AllowedOrigins([]string{"*"})
+	fmt.Println("Server is running...")
 	http.ListenAndServe(":8080", handlers.CORS(origins, methods)(r))
 }

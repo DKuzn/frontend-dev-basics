@@ -52,19 +52,19 @@ func (dw DatabaseWrapper) ReadEventById(id int) Event {
 	return event
 }
 
-func (dw DatabaseWrapper) ReadEvents() []Event {
-	rows, _ := dw.conn.Query(`SELECT id, event_name, event_plate, event_type, event_date, event_time FROM events`)
+func (dw DatabaseWrapper) ReadEvents() []int {
+	rows, _ := dw.conn.Query(`SELECT id FROM events`)
 	defer rows.Close()
 
-	var events []Event
+	var eventIDs []int
 
 	for rows.Next() {
-		var e Event
-		rows.Scan(&e.Id, &e.EventName, &e.EventPlate, &e.EventType, &e.EventDate, &e.EventTime)
-		events = append(events, e)
+		var id int
+		rows.Scan(&id)
+		eventIDs = append(eventIDs, id)
 	}
 
-	return events
+	return eventIDs
 }
 
 func (dw DatabaseWrapper) UpdateEventById(id int, event Event) error {
