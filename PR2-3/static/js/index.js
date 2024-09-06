@@ -21,7 +21,7 @@ async function onFormSubmit() {
     });
 }
 
-async function onGetDataButtonClick() {
+async function onLoadHandler() {
     let response = await fetch("http://localhost:8080/api/event", {
         method: "GET",
         mode: "cors",
@@ -30,18 +30,33 @@ async function onGetDataButtonClick() {
         }
     });
 
-    let data = await response.json();
+    let ids = await response.json();
 
-    formatTable(data);
+    formatTable(ids);
 }
 
-function formatTable(data) {
+async function formatTable(ids) {
     let table = document.getElementById("dataTable");
     clearTable(table);
 
-    let headers = Object.keys(data[0]);
-    addHeaderToTable(table, headers);
-    addRowsToTable(table, data);
+    for (let i = 0; i < ids.length; i++) {
+        let response = await fetch("http://localhost:8080/api/event/" + ids[i], {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        let data = await response.json();
+
+        if (i === 0) {
+            let headers = Object.keys(data);
+            addHeaderToTable(table, headers);
+        }
+
+        addRowToTable(table, data);
+    }
 }
 
 function clearTable(table) {
@@ -54,14 +69,11 @@ function addHeaderToTable(table, headers) {
     table.appendChild(headerElement);
 }
 
-function addRowsToTable(table, rows) {
-    for (r of rows) {
-        let data = Object.values(r);
-        let rowElement = _createRow("td", data);
+function addRowToTable(table, row) {
+    let data = Object.values(row);
+    let rowElement = _createRow("td", data);
 
-        table.appendChild(rowElement);
-    }
-
+    table.appendChild(rowElement);
 }
 
 function _createRow(rowName, rowData) {
